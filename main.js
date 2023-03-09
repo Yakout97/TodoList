@@ -1,10 +1,13 @@
 // Selectors
 
 const inputBtn = document.querySelector('.input-btn');
-const itemWrap = document.querySelector('.item-wrap');
+const itemWrapElement = document.querySelector('.item-wrap');
 const input = document.querySelector('.input');
 const checkListbtn = document.querySelector('.fa-check-square-o');
 const checkList = document.querySelector('.checked-list-position');
+
+// from chat gpt test
+
 
 
 // EventListener
@@ -15,17 +18,18 @@ checkListbtn.addEventListener("click", addInList);
 
 function addItem (a) {
     const value = input.value;
+    
 //conditons for check if the input is empty doesn't excute the code
     if (value === "") {
-        alert("Warning! the input is empty");
+        alert("Please enter a value");
     }
     else
     {
 //Creat li
-    const itemWrap = document.querySelector('.item-wrap');
+    const itemWrapElement = document.querySelector('.item-wrap');
     const creatLi = document.createElement('li');
     creatLi.classList.add('item');
-    itemWrap.appendChild(creatLi);
+    itemWrapElement.appendChild(creatLi);
 //creat child
     const creatChild = document.createElement('div');
     const textChild = document.createTextNode(value);
@@ -56,14 +60,13 @@ function addItem (a) {
             setTimeout(resolve, 660)
         })
         creatLi.remove();
-
     })
 
     // style check btn
 
     creatBtn.addEventListener("click", function () {
 
-        if (creatChild.classList == "item-child", creatLi.classList == "item") {
+        if (creatChild.classList.contains("item-child") && creatLi.classList.contains("item")) {
             creatChild.classList.add('cheked');
             creatLi.classList.add('cheked-background');
 
@@ -76,5 +79,3 @@ function addItem (a) {
 
     }
 }
-
-
